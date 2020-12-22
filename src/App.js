@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {connect} from 'react-redux'
 import FirstWindow from './components/FirstWindow'
 import SecondWindow from './components/SecondWindow'
 
@@ -15,18 +16,15 @@ function App() {
 
   return (
     <div className = "wrapper">
-      <div className = "windows">
+      <div className = "windows border">
                   
-        <FirstWindow data = {data}></FirstWindow>
+        <FirstWindow ></FirstWindow>
          
         <SecondWindow ></SecondWindow>
-      </div> 
-        
-                    
-    </div>
-    
-    
+      </div>        
+    </div>    
   )
+  
   
 }
 

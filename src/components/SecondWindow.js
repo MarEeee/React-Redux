@@ -1,16 +1,15 @@
 import { bool } from 'prop-types';
 import React from 'react'
+import {connect} from "react-redux"
+import {createNewUser, deleteUser} from "../components/redux/action"
 
 
 class SecondWindow extends React.Component{
-    state = {
-        id: null,
-        FIO: "",
-        position:"",
-        birthDay: "",
-        sex: bool,
-        fired: bool
-    };
+    constructor(props){
+        super(props);
+         
+    }
+    
     
     handleOptionChange = e => {
         this.setState(
@@ -21,36 +20,42 @@ class SecondWindow extends React.Component{
     }
 
     submitHandler = e => {
-        e.preventDefault();
-        
+        e.preventDefault();        
 
         const newUser = {
             id: Date.now().toString(),
-            FIO: this.state.FIO,
-            position:this.state.position,
-            birthDay: this.state.birthDay,
-            sex: this.state.sex ,
-            fired: this.state.fired
-        }
-        console.log(this.state.fired.checked);
-        console.log(this.state.sex);
-      
-        this.setState({
-            FIO: ""
-        })
+            FIO: "Имя",
+            position:"Должность",
+            birthDay: "год/месяц/день",
+            sex: "Пол" ,
+            fired: "Работат ли"
+        };
+        console.log(this.props);
+        this.props.createNewUser(newUser);
     }
 
-    changeInputHandler = e => {
-        e.persist();
-        this.setState(prev=>({...prev, ...{
-            [e.target.name]: e.target.value
-        }}))
-    }
+    // changeInputHandler = e => {
+    //     e.persist();
+    //     this.setState(prev=>({...prev, ...{
+    //         [e.target.name]: e.target.value
+    //     }}))
+    // }
+    changeInputHandler = ({ target: t }) => {
+        this.setState(state => ({
+          ...state,
+          [t.name]: t.type === 'checkbox' ? t.checked : t.value,
+        }));
+      }
 
     isFormValid = () => {
         const {FIO, position, birthDay, sex, fired} = this.state;
         console.log(FIO && position && birthDay && sex && fired);
         return FIO && position && birthDay && sex && fired 
+    }
+
+    deleteUser = () => {
+        console.log(this.props.items);
+        
     }
     
 
@@ -60,11 +65,14 @@ class SecondWindow extends React.Component{
                 <div className="input-group mb-3">                    
                     <input type="text" className="form-control" placeholder="ФИО"
                     name="FIO" 
-                    onChange={this.changeInputHandler}></input>
+                    onChange={this.changeInputHandler}
+                    value={this.props.FIO}
+                    ></input>
                 </div>
                 <select className="form-select" aria-label="Default select example"
                 name ="position"
-                onChange={this.changeInputHandler}>        
+                onChange={this.changeInputHandler}> 
+                    <option defaultValue = "Выбирите должность">Выбирите должность</option>       
                     <option value="Старший разработчик">Старший разработчик</option>
                     <option value="Младший разработчик">Младший разработчик</option>
                     <option value="Эйчар">Эйчар</option>
@@ -82,7 +90,9 @@ class SecondWindow extends React.Component{
 
                
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                     id="flexRadioDefault1"
+                     value ="М"
                      name ="sex"
                      onChange={this.changeInputHandler}
                     ></input>
@@ -91,7 +101,9 @@ class SecondWindow extends React.Component{
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    value ="Ж"
                     name ="sex"
                     onChange={this.changeInputHandler}
                     ></input>
@@ -112,13 +124,28 @@ class SecondWindow extends React.Component{
                     Уволен
                     </label>
                 </div>
-                <button type="button" className="btn btn-success" type="submit" disabled = {!this.isFormValid}>Добавить нового сотрудника</button>
-                <button type="button" className="btn btn-danger" type="submit">Удалить выбранного сотрудника</button>  
+                <button type="button" className="btn btn-success" onClick = {this.submitHandler}
+                 disabled = {!this.isFormValid}
+                 >Добавить нового сотрудника</button>
+                <button type="button" className="btn btn-danger"
+                 onClick = {this.deleteUser}>Удалить выбранного сотрудника</button>  
             </form>
         );
     }
 }
 
-export default SecondWindow;
+const mapStateToProps = state => {
+    console.log(state.items.items);
+    return {
+        items: state.items.items
+    }
+}
+
+const mapDispatchToProps = {
+    createNewUser: createNewUser,
+    deleteUser:deleteUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SecondWindow);
 
 

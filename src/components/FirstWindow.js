@@ -4,12 +4,12 @@ import FirstWindowItems from './FirstWindowItems'
 import {connect} from "react-redux"
 
 
-const FirstWindow = (props) =>{
+const FirstWindow = ({items}) =>{
     const [active, setActive] = React.useState(null);
     return(
-        <div className = "window">
+        <div className = "container">
             {
-                props.data.map((item,i) =>{
+                items.map((item,i) =>{
                     return <FirstWindowItems
                      item = {item}
                      isActive={active===i}
@@ -22,13 +22,15 @@ const FirstWindow = (props) =>{
     )
 }
 
-FirstWindow.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object).isRequired
-}
+// FirstWindow.propTypes = {
+//     data: PropTypes.arrayOf(PropTypes.object).isRequired
+// }
 
 const mapStateToProps = state => {
-    console.log(state);
-    return state
+    console.log(state.items.items);
+    return {
+        items: state.items.items
+    }
 }
 
 export default connect(mapStateToProps, null)(FirstWindow);
