@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'  //
 import {rootReducer} from './components/redux/rootReducer';
 
 
-const store = createStore(rootReducer, compose(
+const store = createStore(rootReducer, compose(  //создаем стор для управления состояниями
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
 

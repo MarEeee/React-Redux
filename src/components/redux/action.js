@@ -1,7 +1,7 @@
-import { CREATE_NEW_USER, DELETE_USER, USER_INFO} from "./types";
+import { CREATE_NEW_USER, DELETE_USER, USER_INFO, CHANGE_INFO} from "./types";
 
 
-function createNewUser(item){
+export function createNewUser(item){
     return {
         type: CREATE_NEW_USER,
         payload: item
@@ -9,18 +9,26 @@ function createNewUser(item){
 }
 
 
-function deleteUser(deleteElemId){
+export function deleteUser(deleteElem){ 
     return {
         type: DELETE_USER,
-        payload: deleteElemId
+        payload: deleteElem
     }
 }
 
-function userInfo(item){
+export function userInfo(item){
     return {
         type: USER_INFO,
         payload: item
     }
 }
 
-export {createNewUser, deleteUser, userInfo}
+export function changeInfo(item) {
+    return {
+        type: CHANGE_INFO,
+        payload: item
+    }
+}
+
+
+

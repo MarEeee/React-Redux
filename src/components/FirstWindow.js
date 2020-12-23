@@ -1,38 +1,47 @@
 import React from 'react'
-import PropTypes from "prop-types"
 import FirstWindowItems from './FirstWindowItems'
-import {connect} from "react-redux"
+import {connect, useDispatch} from "react-redux"
+import {createNewUser, userInfo} from "./redux/action"
 
 
-const FirstWindow = ({items}) =>{
-    const [active, setActive] = React.useState(null);
+
+const FirstWindow = ({items, active, setActive}) =>{
+    const dispatch = useDispatch();
+    function getElem(i, item) {                 
+        setActive(i);        
+        dispatch(userInfo(item));     //поиска активного элемента   
+    }
+
+    
     return(
         <div className = "container">
             {
-                items.map((item,i) =>{
+                items.items.map((item,i) =>{
                     return <FirstWindowItems
                      item = {item}
                      isActive={active===i}
-                     onClick={()=>setActive(i)}
-                     key={item.id}></FirstWindowItems>
+                     onClick={()=>getElem(i,item)}
+                     key={item.id}
+                     
+                     ></FirstWindowItems>
                 })
-            }
-            
+            }            
         </div>
     )
 }
 
-// FirstWindow.propTypes = {
-//     data: PropTypes.arrayOf(PropTypes.object).isRequired
-// }
 
-const mapStateToProps = state => {
-    console.log(state.items.items);
+
+const mapStateToProps = state => {    
     return {
-        items: state.items.items
+        items: state.items
     }
 }
 
-export default connect(mapStateToProps, null)(FirstWindow);
+const mapDispatchToProps = {
+    createNewUser:createNewUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FirstWindow);
 
 
