@@ -78,13 +78,13 @@ class SecondWindow extends React.Component{
                     <input type="text" className="form-control" placeholder="ФИО"
                     name="FIO" 
                     onChange={this.changeInputHandler}
-                    value={this.props.items.activeUser.FIO}
+                    value={this.props.items.activeUser.FIO || ""}
                     maxLength="15"></input>
                 </div>
                 <select className="form-select" aria-label="Default select example"
                 name ="position"
                 onChange={this.changeInputHandler}
-                value={this.props.items.activeUser.position}                
+                value={this.props.items.activeUser.position || ""}                
                 >                    
                     <option value = "Не назначено">Не назначено</option>
                     <option value="Старший разработчик">Старший разработчик</option>
@@ -98,7 +98,7 @@ class SecondWindow extends React.Component{
                         <input className="form-control" type="date"  id="example-date-input"
                         name ="birthDay"
                         onChange={this.changeInputHandler}
-                        value={this.props.items.activeUser.birthDay}></input>  
+                        value={this.props.items.activeUser.birthDay || ""}></input>  
                 </div>
               
 
@@ -110,7 +110,7 @@ class SecondWindow extends React.Component{
                      
                      name ="sex"
                      onChange={this.changeInputHandler}
-                     checked = {this.props.items.activeUser.sex}
+                     checked = {this.props.items.activeUser.sex || ""}
                     ></input>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                     М
@@ -122,7 +122,7 @@ class SecondWindow extends React.Component{
                     
                     name ="sex"
                     onChange={this.changeInputHandler}
-                    checked = {!this.props.items.activeUser.sex}
+                    checked = {!this.props.items.activeUser.sex || ""}
                     
                     ></input>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
@@ -137,7 +137,7 @@ class SecondWindow extends React.Component{
                     <input className="form-check-input" type="checkbox"  id="flexCheckDefault"
                     name ="fired"
                     onChange={this.changeInputHandler}
-                    checked={this.props.items.activeUser.fired}
+                    checked={this.props.items.activeUser.fired || ""}
                     
                     ></input>
                     <label className="form-check-label" htmlFor="flexCheckDefault">
