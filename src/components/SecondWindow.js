@@ -6,14 +6,7 @@ import {createNewUser, deleteUser, changeInfo, userInfo} from "../components/red
 class SecondWindow extends React.Component{
     constructor(props){
         super(props);
-        this.newUser =  {
-            id: Date.now().toString(),
-            FIO: "Имя",
-            position:"Должность",
-            birthDay: "год/месяц/день",
-            sex: true,
-            fired: false
-        };        
+        
     }
     
     
@@ -27,8 +20,16 @@ class SecondWindow extends React.Component{
 
     submitHandler = e => {
         e.preventDefault();   
-        this.props.createNewUser(this.newUser); // создаем нового пользователя
-        this.props.userInfo(this.newUser); // закватывает текущего юзера для работы в форме
+        const newUser =  {
+            id: Date.now().toString(),
+            FIO: "Имя",
+            position:"Должность",
+            birthDay: "год/месяц/день",
+            sex: true,
+            fired: false
+        };        
+        this.props.createNewUser(newUser); // создаем нового пользователя
+        this.props.userInfo(newUser); // закватывает текущего юзера для работы в форме
         this.props.setActive(this.props.items.items.length); // добавляем выделение на нового пользователя
         
     }

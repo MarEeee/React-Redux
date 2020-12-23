@@ -24,33 +24,16 @@ code {
   flex-direction: row;
   justify-content: space-between;
 }
-
-.window{
-  width: 600px;
-  border: 1px solid red;  
-}
-
-.add-new-user{
-  display: flex;
-  flex-direction: column;
-}
-.window__items{
-  width: 600px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border: 1px solid blue;
-}
-.window__item{
-  width: 150px;
+.window__header{
+  background-color: #e5f1ee;
+  padding-bottom: 10px;
 }
 
 .window__items.active{
   border: 2px solid blue;
   background-color: blue;
 }
-
-.window__header{
-  background-color: #e5f1ee;
-  padding-bottom: 10px;
+.container{
+  margin-right: 10px;
 }
+

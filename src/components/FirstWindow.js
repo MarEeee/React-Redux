@@ -14,7 +14,7 @@ const FirstWindow = ({items, active, setActive}) =>{
 
     
     return(
-        <div className = "container">           
+        <div className = "container border">           
                  <div className= "row border window__header">           
                      <div className = "col-md-2">Фамилия</div>
                      <div className = "col-md-3">Должность</div>
