@@ -10,7 +10,6 @@ const initialState = {
     activeUser: {}
 }
 
-
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_NEW_USER:      //Создание нового пользователя      

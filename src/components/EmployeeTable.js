@@ -4,40 +4,40 @@ import {connect, useDispatch} from "react-redux"
 import {createNewUser, userInfo} from "./redux/action"
 
 
-//функциональный компонент.
+//Пример реализации функциональный компонент.
 const EmployeeTable = ({items, active, setActive}) =>{
     const dispatch = useDispatch();
-    function getElem(i, item) {                 
-        setActive(i);        
-        dispatch(userInfo(item));     //поиска активного элемента   
+    function getElem(i, item) {
+        setActive(i);
+        dispatch(userInfo(item)); //поиска активного элемента   
     }
-
     
     return(
-        <div className = "container border">           
-                 <div className= "row border window__header">           
-                     <div className = "col-md-2">Фамилия</div>
-                     <div className = "col-md-3">Должность</div>
-                     <div className = "col-sm">Дата рождения</div>
-                     <div className = "col-sm">Пол</div>
-                     <div className = "col-sm">Работет ли
-                     </div>            
-                 </div>
+        <table className = "table">
+            <thead>
+                 <tr className= "row  window__header">
+                     <th className = "col">Фамилия</th>
+                     <th className = "col">Должность</th>
+                     <th className = "col">Дата рождения</th>
+                     <th className = "col">Пол</th>
+                     <th className = "col">Работет ли</th>
+                 </tr>
+            </thead>
+            <tbody>
             {
                 items.items.map((item,i) =>{
                     return <EmployeeTableItems
-                     item = {item}
-                     isActive={active===i}
-                     onClick={()=>getElem(i,item)}
-                     key={item.id}                     
+                        item = {item}
+                        isActive={active===i}
+                        onClick={()=>getElem(i,item)}
+                        key={item.id}       
                      ></EmployeeTableItems>
                 })
-            }            
-        </div>
+            }
+            </tbody>
+        </table>
     )
 }
-
-
 
 const mapStateToProps = state => {    
     return {
@@ -50,5 +50,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeTable);
-
-

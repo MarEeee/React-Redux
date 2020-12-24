@@ -10,24 +10,24 @@ function EmployeeTableItems({item, isActive, onClick}) {
       }
 
     return(
-        <div className={`row border ${isActive ? 'border-primary' : ''}`} onClick={(e)=>handleClick(e)}
-        >           
-            <div className = "col-md-2">{item.FIO}</div>
-            <div className = "col-md-3">{item.position}</div>
-            <div className = "col-sm">{item.birthDay}</div>
-            <div className = "col-sm">                {
+        <tr className={`row border item ${isActive ? 'border-primary' : ''}`} onClick={(e)=>handleClick(e)}>           
+            <td className = "col">{item.FIO}</td>
+            <td className = "col">{item.position}</td>
+            <td className = "col">{item.birthDay}</td>
+            <td className = "col">
+                {
                     item.sex ?
                         "М" : "Ж"                    
                 }            
-            </div>
-            <div className = "col-sm">{
+            </td>
+            <td className = "col">
+                {
                     item.fired ?
                         "Уволен":"Работает"
-            }
-            </div>            
-        </div>
+                }
+            </td>            
+        </tr>
     )
 }
-
 
 export default connect(null, null)(EmployeeTableItems);

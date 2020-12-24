@@ -39,6 +39,3 @@ export function changeInfo(item) {
         payload: item
     }
 }
-
-
-

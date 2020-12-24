@@ -12,28 +12,45 @@ code {
     monospace;
 }
 
-
 .wrapper{
   padding-top: 5rem;
   margin: 0 auto;
-  width: 1280px;  
+  width: 80rem;  
 }
 
 .windows{
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0 auto;
 }
+.table{
+  width: 80%;
+  margin-right: 2rem;
+}
+
 .window__header{
-  background-color: #e5f1ee;
-  padding-bottom: 10px;
+  background-color: #e5f1ee;  
 }
 
 .window__items.active{
   border: 2px solid blue;
   background-color: blue;
 }
-.container{
-  margin-right: 10px;
+
+.EmployeeTable{
+  width: 70%;
+}
+.FormForEditing{
+  width: 30%;
 }
 
+.item{
+  cursor: pointer;
+}
+
+.btn{  
+  margin-bottom: 1rem;
+  width: 70%;
+}
