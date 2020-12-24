@@ -11,11 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+#id{
+  width: 100%;
+}
 .wrapper{
   padding-top: 5rem;
   margin: 0 auto;
-  width: 80rem;  
+  max-width:80rem;  
 }
 
 .windows{
