@@ -4,10 +4,9 @@ import {createNewUser, deleteUser, changeInfo, userInfo} from "./redux/action"
 
 //классовый компонент.
 class FormForEditing extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    
+    // constructor(props){
+    //     super(props);
+    // }    
     handleOptionChange = e => {
         this.setState(
             {
@@ -47,11 +46,9 @@ class FormForEditing extends React.Component{
         this.props.changeInfo(valueForUpdate);
       }
 
-    deleteUser = () => {     
-        console.log(this.props.items.activeUser);   
+    deleteUser = () => {   
        this.props.deleteUser(this.props.items.activeUser);        
-       this.props.userInfo();
-       console.log(this.props.items); 
+       this.props.userInfo();      
        this.props.setActive(null); 
     }
     
@@ -75,11 +72,6 @@ class FormForEditing extends React.Component{
                     {positionList.map((value,index)=>{
                         return  <option value={value} key = {index}>{value}</option>
                     })}
-                    {/* <option value = "Не назначено">Не назначено</option>
-                    <option value="Старший разработчик">Старший разработчик</option>
-                    <option value="Младший разработчик">Младший разработчик</option>
-                    <option value="Эйчар">Эйчар</option>
-                    <option value="Уборщик">Уборщик</option> */}
                 </select>
 
                 <div className="form-group ">                

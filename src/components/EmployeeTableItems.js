@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 
-function FirstWindowItems({item, isActive, onClick}) {    
+function EmployeeTableItems({item, isActive, onClick}) {    
     
     function handleClick(e){
         e.preventDefault();        
@@ -30,4 +30,4 @@ function FirstWindowItems({item, isActive, onClick}) {
 }
 
 
-export default connect(null, null)(FirstWindowItems);
+export default connect(null, null)(EmployeeTableItems);

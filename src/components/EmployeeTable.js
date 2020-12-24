@@ -23,14 +23,13 @@ const EmployeeTable = ({items, active, setActive}) =>{
                      <div className = "col-sm">Работет ли
                      </div>            
                  </div>
-                 {
+            {
                 items.items.map((item,i) =>{
                     return <EmployeeTableItems
                      item = {item}
                      isActive={active===i}
                      onClick={()=>getElem(i,item)}
-                     key={item.id}
-                     
+                     key={item.id}                     
                      ></EmployeeTableItems>
                 })
             }            

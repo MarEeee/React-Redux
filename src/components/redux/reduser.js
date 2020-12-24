@@ -32,13 +32,10 @@ const reducer = (state = initialState, action) => {
                 }
                 else return item
             })
-        }
-       
-
+        }   
         default:
             return state;
-    }
-    
+    }    
 }
 
 export {reducer}
