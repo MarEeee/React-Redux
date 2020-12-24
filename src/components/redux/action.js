@@ -3,8 +3,8 @@ import {CREATE_NEW_USER, DELETE_USER, USER_INFO, CHANGE_INFO} from "./types";
 class newUser {
     constructor() {
         this.id = Date.now().toString() + Math.random().toString();
-        this.FIO = "Имя";
-        this.position = "Должность";
+        this.FIO = "Не назначено";
+        this.position = "Не назначено";
         this.birthDay = "год/месяц/день";
         this.sex = true;
         this.fired = false;

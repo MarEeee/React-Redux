@@ -84,7 +84,8 @@ class FormForEditing extends React.Component{
                         name ="birthDay"
                         onChange={this.changeInputHandler}
                         value={this.props.items.activeUser.birthDay || ""}
-                        disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}></input>  
+                        disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}
+                        onKeyDown={(e) => e.preventDefault()}></input>
                 </div>
                
                <div className = "radio">
