@@ -61,7 +61,8 @@ class FormForEditing extends React.Component{
                         name="FIO" 
                         onChange={this.changeInputHandler}
                         value={this.props.items.activeUser.FIO || ""}
-                        maxLength="15">                            
+                        maxLength="15"
+                        disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}>                            
                     </input>
                 </div>
 
@@ -69,6 +70,7 @@ class FormForEditing extends React.Component{
                     name ="position"
                     onChange={this.changeInputHandler}
                     value={this.props.items.activeUser.position || ""}
+                    disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}
                 >
                     {positionList.map((value,index)=>{
                         return  <option value={value} key = {index}>{value}</option>
@@ -81,54 +83,65 @@ class FormForEditing extends React.Component{
                         <input className="form-control" type="date"  id="example-date-input"
                         name ="birthDay"
                         onChange={this.changeInputHandler}
-                        value={this.props.items.activeUser.birthDay || ""}></input>  
+                        value={this.props.items.activeUser.birthDay || ""}
+                        disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}></input>  
                 </div>
                
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" 
-                     id="flexRadioDefault1"                     
-                     name ="sex"
-                     onChange={this.changeInputHandler}
-                     checked = {this.props.items.activeUser.sex || ""}></input>
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
-                        М
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" 
-                    id="flexRadioDefault1"                    
-                    name ="sex"
-                    onChange={this.changeInputHandler}
-                    checked = {!this.props.items.activeUser.sex || ""}></input>
-                    <label className="form-check-label" htmlFor="flexRadioDefault1">
-                        Ж
-                    </label>                
+               <div className = "radio">
+                    <div className="form-check">
+                        <input className="form-check-input" type="radio" 
+                            id="flexRadioDefault1"                     
+                            name ="sex"
+                            onChange={this.changeInputHandler}
+                            checked = {this.props.items.activeUser.sex || ""}
+                            disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}>                         
+                        </input>
+                        <label className="form-check-label" htmlFor="flexRadioDefault1">
+                            М
+                        </label>
+                    </div>
+                    <div className="form-check radio_elem">
+                        <input className="form-check-input " type="radio" 
+                            id="flexRadioDefault1"                    
+                            name ="sex"
+                            onChange={this.changeInputHandler}
+                            checked = {!this.props.items.activeUser.sex || ""}
+                            disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}>                                                   
+                        </input>
+                        <label className="form-check-label" htmlFor="flexRadioDefault1">
+                            Ж
+                        </label>                
+                    </div>
                 </div>      
                 
-                <div className="form-check">
+                <div className="form-check checkbox">
                     <input className="form-check-input" type="checkbox"  id="flexCheckDefault"
-                    name ="fired"
-                    onChange={this.changeInputHandler}
-                    checked={this.props.items.activeUser.fired || ""}></input>
+                        name ="fired"
+                        onChange={this.changeInputHandler}
+                        checked={this.props.items.activeUser.fired || ""}
+                        disabled={Object.keys(this.props.items.activeUser).length === 0? true : false}>
+                    </input>
                     <label className="form-check-label" htmlFor="flexCheckDefault">
-                    Уволен
+                        Уволен
                     </label>
                 </div>
-                <button 
-                    type="button" 
-                    className="btn btn-success" 
-                    onClick = {this.submitHandler}
-                >
-                    Добавить нового сотрудника
-                </button>
-                <button
-                    type="button" 
-                    className="btn btn-danger"
-                    onClick = {this.deleteUser}
-                    disabled = {Object.keys(this.props.items.activeUser).length===0 ? true : false}
-                >
-                    Удалить выбранного сотрудника
-                </button>  
+                <div className = "buttons">
+                    <button 
+                        type="button" 
+                        className="btn btn-success" 
+                        onClick = {this.submitHandler}
+                    >
+                        Добавить нового сотрудника
+                    </button>
+                    <button
+                        type="button" 
+                        className="btn btn-danger"
+                        onClick = {this.deleteUser}
+                        disabled = {Object.keys(this.props.items.activeUser).length===0 ? true : false}
+                    >
+                        Удалить выбранного сотрудника
+                    </button>
+                </div>  
             </form>
         );
     }
