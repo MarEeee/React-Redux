@@ -1,13 +1,23 @@
-import { CREATE_NEW_USER, DELETE_USER, USER_INFO, CHANGE_INFO} from "./types";
+import {CREATE_NEW_USER, DELETE_USER, USER_INFO, CHANGE_INFO} from "./types";
 
+class newUser {
+    constructor() {
+        this.id = Date.now().toString() + Math.random().toString();
+        this.FIO = "Имя";
+        this.position = "Должность";
+        this.birthDay = "год/месяц/день";
+        this.sex = true;
+        this.fired = false;
 
-export function createNewUser(item){
-    return {
-        type: CREATE_NEW_USER,
-        payload: item
     }
 }
 
+export function createNewUser(){    
+    return {
+        type: CREATE_NEW_USER,
+        payload: new newUser()
+    }
+}
 
 export function deleteUser(deleteElem){ 
     return {
@@ -16,7 +26,7 @@ export function deleteUser(deleteElem){
     }
 }
 
-export function userInfo(item){
+export function userInfo(item = {}){
     return {
         type: USER_INFO,
         payload: item

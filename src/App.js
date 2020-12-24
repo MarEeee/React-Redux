@@ -1,7 +1,7 @@
 import React from 'react'
 
-import FirstWindow from './components/FirstWindow'
-import SecondWindow from './components/SecondWindow'
+import EmployeeTable from './components/EmployeeTable'
+import FormForEditing from './components/FormForEditing'
 
 
 function App() { 
@@ -9,8 +9,8 @@ function App() {
   return (
     <div className = "wrapper">
       <div className = "windows border">                    
-        <FirstWindow active = {active}  setActive = {setActive}></FirstWindow>         
-        <SecondWindow active = {active}  setActive = {setActive}></SecondWindow> 
+        <EmployeeTable active = {active}  setActive = {setActive}></EmployeeTable>         
+        <FormForEditing active = {active}  setActive = {setActive}></FormForEditing> 
       </div>        
     </div>    
   ) 

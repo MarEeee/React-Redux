@@ -1,14 +1,12 @@
 import React from 'react'
 import {connect} from "react-redux"
-import {createNewUser, deleteUser, changeInfo, userInfo} from "../components/redux/action"
+import {createNewUser, deleteUser, changeInfo, userInfo} from "./redux/action"
 
 //классовый компонент.
-class SecondWindow extends React.Component{
+class FormForEditing extends React.Component{
     constructor(props){
         super(props);
-        
     }
-    
     
     handleOptionChange = e => {
         this.setState(
@@ -19,17 +17,9 @@ class SecondWindow extends React.Component{
     }
 
     submitHandler = e => {
-        e.preventDefault();   
-        const newUser =  {
-            id: Date.now().toString(),
-            FIO: "Имя",
-            position:"Должность",
-            birthDay: "год/месяц/день",
-            sex: true,
-            fired: false
-        };        
-        this.props.createNewUser(newUser); // создаем нового пользователя
-        this.props.userInfo(newUser); // закватывает текущего юзера для работы в форме
+        e.preventDefault(); 
+        let newUser = this.props.createNewUser(); // создаем нового пользователя
+        this.props.userInfo(newUser.payload); // закватывает текущего юзера для работы в форме
         this.props.setActive(this.props.items.items.length); // добавляем выделение на нового пользователя
         
     }
@@ -57,22 +47,17 @@ class SecondWindow extends React.Component{
         this.props.changeInfo(valueForUpdate);
       }
 
-    deleteUser = () => {        
-        this.props.deleteUser(this.props.items.activeUser); 
-       this.props.userInfo({
-        id: Date.now().toString(),
-        FIO: "Имя",
-        position:"Должность",
-        birthDay: "год/месяц/день",
-        sex: true,
-        fired: false
-    });        
-        this.props.setActive(null); 
-        
+    deleteUser = () => {     
+        console.log(this.props.items.activeUser);   
+       this.props.deleteUser(this.props.items.activeUser);        
+       this.props.userInfo();
+       console.log(this.props.items); 
+       this.props.setActive(null); 
     }
     
-
+    
     render() {
+        const positionList = ["Не назначено","Старший разработчик","Младший разработчик","Эйчар","Уборщик"];
         return (
             <form onSubmit={this.submitHandler}>
                 <div className="input-group mb-3">                    
@@ -83,15 +68,18 @@ class SecondWindow extends React.Component{
                     maxLength="15"></input>
                 </div>
                 <select className="form-select" aria-label="Default select example"
-                name ="position"
-                onChange={this.changeInputHandler}
-                value={this.props.items.activeUser.position || ""}                
-                >                    
-                    <option value = "Не назначено">Не назначено</option>
+                    name ="position"
+                    onChange={this.changeInputHandler}
+                    value={this.props.items.activeUser.position || ""}> 
+
+                    {positionList.map((value,index)=>{
+                        return  <option value={value} key = {index}>{value}</option>
+                    })}
+                    {/* <option value = "Не назначено">Не назначено</option>
                     <option value="Старший разработчик">Старший разработчик</option>
                     <option value="Младший разработчик">Младший разработчик</option>
                     <option value="Эйчар">Эйчар</option>
-                    <option value="Уборщик">Уборщик</option>
+                    <option value="Уборщик">Уборщик</option> */}
                 </select>
 
                 <div className="form-group ">                
@@ -169,6 +157,6 @@ const mapDispatchToProps = {
     userInfo: userInfo
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SecondWindow);
+export default connect(mapStateToProps, mapDispatchToProps)(FormForEditing);
 
 

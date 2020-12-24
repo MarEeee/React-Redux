@@ -1,11 +1,11 @@
 import React from 'react'
-import FirstWindowItems from './FirstWindowItems'
+import EmployeeTableItems from './EmployeeTableItems'
 import {connect, useDispatch} from "react-redux"
 import {createNewUser, userInfo} from "./redux/action"
 
 
 //функциональный компонент.
-const FirstWindow = ({items, active, setActive}) =>{
+const EmployeeTable = ({items, active, setActive}) =>{
     const dispatch = useDispatch();
     function getElem(i, item) {                 
         setActive(i);        
@@ -25,13 +25,13 @@ const FirstWindow = ({items, active, setActive}) =>{
                  </div>
                  {
                 items.items.map((item,i) =>{
-                    return <FirstWindowItems
+                    return <EmployeeTableItems
                      item = {item}
                      isActive={active===i}
                      onClick={()=>getElem(i,item)}
                      key={item.id}
                      
-                     ></FirstWindowItems>
+                     ></EmployeeTableItems>
                 })
             }            
         </div>
@@ -50,6 +50,6 @@ const mapDispatchToProps = {
     createNewUser:createNewUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FirstWindow);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeTable);
 
 

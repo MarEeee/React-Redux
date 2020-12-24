@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
                 return item.id !== action.payload.id;
             })
         }
-        case USER_INFO: // Получение текущего пользователя
+        case USER_INFO: // Получение текущего пользователя            
             return {...state, activeUser: action.payload}
 
         case CHANGE_INFO: //Обновления иформации о пользователе 
