@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {compose, createStore} from 'redux'
+//FIXME: What are the slashes?
 import {Provider} from 'react-redux'  //
 import {rootReducer} from './components/redux/rootReducer';
 
@@ -15,7 +16,7 @@ const store = createStore(rootReducer, compose(  //создаем стор дл�
 const app = (
   <Provider store = {store}>
     <React.StrictMode>
-      <App />    
+      <App />
     </React.StrictMode>
   </Provider>
 )
